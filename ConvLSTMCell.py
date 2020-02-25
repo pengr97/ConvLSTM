@@ -1,8 +1,10 @@
 import torch
 import torch.nn as nn
 
+
 class ConvLSTMCell(nn.Module):
-    def __init__(self,input_size,input_dim,hidden_dim,kernel_size,padding=0,stride=1,dilation=1,bias=True):
+
+    def __init__(self, input_size, input_dim, hidden_dim, kernel_size, padding=0, stride=1, dilation=1, bias=True):
         super(ConvLSTMCell, self).__init__()
         self.input_size = input_size
         self.input_dim = input_dim
@@ -12,12 +14,12 @@ class ConvLSTMCell(nn.Module):
 
         # Pytorch has no "SAME" pattern
         if self.padding == "SAME":
-            self.padding = (input_size-1)*stride-input_size+kernel_size+(kernel_size-1)*(dilation-1)
+            self.padding = (input_size - 1) * stride - input_size + kernel_size + (kernel_size - 1) * (dilation - 1)
 
         # in_channels, out_channels, kernel_size, stride=1, padding=0,
         # dilation=1, groups=1, bias=True, padding_mode='zeros'
-        self.conv = nn.Conv2d(in_channels=self.input_dim+self.hidden_dim,
-                              out_channels=4*self.hidden_dim,
+        self.conv = nn.Conv2d(in_channels=self.input_dim + self.hidden_dim,
+                              out_channels=4 * self.hidden_dim,
                               kernel_size=self.kernel_size,
                               padding=self.padding,
                               stride=stride,
@@ -43,4 +45,3 @@ class ConvLSTMCell(nn.Module):
         h_next = o * torch.tanh(c_next)
 
         return c_next, h_next
-
