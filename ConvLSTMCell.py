@@ -5,6 +5,14 @@ import torch.nn as nn
 class ConvLSTMCell(nn.Module):
 
     def __init__(self, input_size, input_dim, hidden_dim, kernel_size, padding=0, stride=1, dilation=1, bias=True):
+
+        """
+        :param input_size: (h,w)
+        :param input_dim: the channel of input xt
+        :param hidden_dim: the channel of state h and c
+        :param padding: add "SAME" pattern
+        """
+
         super(ConvLSTMCell, self).__init__()
         self.input_size = input_size
         self.input_dim = input_dim
@@ -26,9 +34,12 @@ class ConvLSTMCell(nn.Module):
                               dilation=dilation,
                               bias=bias)
 
-    # xt shape: b,c,h,w
-    # state include c(t-1) and h(t-1)
     def forward(self, xt, state):
+        """
+        :param xt: (b,c,h,w)
+        :param state: include c(t-1) and h(t-1)
+        :return: c_next, h_next
+        """
         c, h = state
 
         # concatenate h and xt along channel axis
