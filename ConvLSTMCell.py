@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from torch.autograd import Variable
 
 
 class ConvLSTMCell(nn.Module):
@@ -56,3 +57,7 @@ class ConvLSTMCell(nn.Module):
         h_next = o * torch.tanh(c_next)
 
         return c_next, h_next
+
+    def init_state(self, batch_size):
+        return (Variable(torch.zeros(batch_size, self.hidden_dim, self.height, self.width)).cuda(),
+                Variable(torch.zeros(batch_size, self.hidden_dim, self.height, self.width)).cuda())
