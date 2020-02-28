@@ -20,3 +20,6 @@
 ### Attention
  - Input contains two variables, **Input**'s shape is (batch_size, time_step, channel, height, width); and initial **state**, default None
  - Output also contains two variables: **output** (batch_size, time_steps, channel, height, weight); and a tuple **state** contain **c** and **h**, shape  (batch_size, channel, height, weight)
+ 
+ ### About Sample.py
+ - You need have the MNIST dataset with the same directory as project, or you can change the variable `DOWNLOAD_MNIST` to `True`
