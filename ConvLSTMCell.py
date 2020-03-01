@@ -33,13 +33,16 @@ class ConvLSTMCell(nn.Module):
 
         # in_channels, out_channels, kernel_size, stride=1, padding=0,
         # dilation=1, groups=1, bias=True, padding_mode='zeros'
-        self.conv = nn.Conv2d(in_channels=self.input_dim + self.hidden_dim,
-                              out_channels=4 * self.hidden_dim,
-                              kernel_size=self.kernel_size,
-                              padding=self.padding,
-                              stride=stride,
-                              dilation=dilation,
-                              bias=bias)
+        self.conv = nn.Sequential(
+            nn.Conv2d(in_channels=self.input_dim + self.hidden_dim,
+                      out_channels=4 * self.hidden_dim,
+                      kernel_size=self.kernel_size,
+                      padding=self.padding,
+                      stride=stride,
+                      dilation=dilation,
+                      bias=bias),
+            # nn.ReLU()
+        )
 
     def forward(self, xt, state):
         """

@@ -62,7 +62,7 @@ class HandwrittenClassifier(nn.Module):
 
 
 # print(next(iter(train_loader))[0].size())
-handC = HandwrittenClassifier(input_size=INPUT_SIZE, input_dim=1, hidden_dim=3, kernel_size=3, num_layers=4).to(device=DEVICE)
+handC = HandwrittenClassifier(input_size=INPUT_SIZE, input_dim=1, hidden_dim=3, kernel_size=3, num_layers=3).to(device=DEVICE)
 optimizer = torch.optim.Adam(handC.parameters(), lr=LR)
 loss_func = nn.CrossEntropyLoss()
 
