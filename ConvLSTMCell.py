@@ -5,7 +5,7 @@ from torch.autograd import Variable
 
 class ConvLSTMCell(nn.Module):
 
-    def __init__(self, input_size, input_dim, hidden_dim, kernel_size, padding=0, stride=1, dilation=1, bias=True):
+    def __init__(self, input_size, input_dim, hidden_dim, kernel_size, padding="SAME", stride=1, dilation=1, bias=True):
         """
         :param input_size: (h,w)
         :param input_dim: the channel of input xt

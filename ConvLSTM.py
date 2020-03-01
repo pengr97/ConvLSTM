@@ -6,7 +6,7 @@ from ConvLSTMCell import ConvLSTMCell
 class ConvLSTM(nn.Module):
 
     def __init__(self, input_size, input_dim, hidden_dim, kernel_size,
-                 num_layers=1, padding=0, stride=1, dilation=1, bias=True, batch_first=True):
+                 num_layers=1, padding="SAME", stride=1, dilation=1, bias=True, batch_first=True):
         """
         :param input_size: (h,w)
         :param input_dim: the channel of input xt in the first layer
