@@ -18,7 +18,7 @@
                   )  
 ```
 ### Attention
- - Input contains two variables, **Input**'s shape is (batch_size, time_step, channel, height, width); and initial **state**, default None
+ - Input contains two variables, **Input**'s shape is (batch_size, time_steps, channel, height, width); and initial **state**, default None
  - Output also contains two variables: **output** (batch_size, time_steps, channel, height, weight); and a tuple **state** contain **c** and **h**, shape  (batch_size, channel, height, weight)
  
  ### About Sample.py
